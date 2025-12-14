@@ -1,0 +1,59 @@
+﻿@using application_session.emun
+@model application_session.Viewmodel.TodoAddVM
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<h4>TodoAddVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Libelle" class="control-label"></label>
+                <input asp-for="Libelle" class="form-control" />
+                <span asp-validation-for="Libelle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateLimite" class="control-label"></label>
+                <input asp-for="DateLimite" class="form-control" />
+                <span asp-validation-for="DateLimite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                TODO  :<input type="radio" value="@(state.TODO)" asp-for="State" checked />
+                DOING :<input type="radio" value="@(state.DOING)" asp-for="State" />
+                DONE  :<input type="radio" value="@(state.DONE)" asp-for="State" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="List" class="btn btn-secondary">Afficher Tous</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<hr />
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

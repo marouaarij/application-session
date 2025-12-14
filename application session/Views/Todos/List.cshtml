@@ -1,0 +1,34 @@
+﻿@model List<application_session.Models.Todo>
+
+<h2>Liste des Todos</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>Date Limite</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var todo in Model)
+            {
+                <tr>
+                    <td>@todo.Libelle</td>
+                    <td>@todo.Description</td>
+                    <td>@(todo.DateLimite)</td>
+                    <td>@todo.State</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Aucun todo trouvé.</p>
+}
+
+<a asp-action="Add" class="btn btn-primary">Ajouter un Todo</a>
